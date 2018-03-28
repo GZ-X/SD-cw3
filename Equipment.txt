@@ -1,0 +1,4 @@
+1~Equipment1~1000~
+2~Equipment2~2000~
+3~Equipment3~2000~
+4~Equipment4~4000~

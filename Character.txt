@@ -1,0 +1,4 @@
+1~Member1~1000~attribute1~attribute2~attribute3~
+2~Member2~2000~attribute1~attribute2~attribute3~
+3~Member3~2000~attribute1~attribute2~attribute3~
+4~Member4~4000~attribute1~attribute2~attribute3~

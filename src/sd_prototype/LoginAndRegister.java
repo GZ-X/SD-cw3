@@ -10,12 +10,12 @@ public class LoginAndRegister {
 	public boolean login() throws IOException {
 		boolean flag = false;
 		// login interface
-		System.out.println("--------------------Login--------------------");
+		System.out.println("--------------------Login--------------------\n");
 		System.out.println("Please enter your username:");
-		String username = sc.nextLine();
+		StaticVariable.username = sc.nextLine();
 		System.out.println("Please enter your password:");
-		String password = sc.nextLine();
-		if (new Verify().verifyCorrectness(username, password)) {
+		StaticVariable.password = sc.nextLine();
+		if (new Verify().verifyCorrectness(StaticVariable.username, StaticVariable.password)) {
 			System.out.println("Login successful");
 			flag = true;
 		} else {
@@ -29,7 +29,7 @@ public class LoginAndRegister {
 	public void register() throws IOException {
 
 		// register page
-		System.out.println("--------------------Register--------------------");
+		System.out.println("--------------------Register--------------------\n");
 		System.out.println("Please enter your username:");
 		String newUserName = sc.nextLine();
 		System.out.println("Please enter your password:");
@@ -44,6 +44,7 @@ public class LoginAndRegister {
 			if (!new Verify().verifyExist(info[0])) {
 				
 				new FileOperation().write(info);// write user information to file
+				new FileOperation().writeBalance(info);//create initial balance for user
 				System.out.println("Registration success");
 			} else {
 				System.out.println("Registration failed,username exists\n");
