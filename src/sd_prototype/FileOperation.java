@@ -33,7 +33,7 @@ public class FileOperation {
 	public void writeBalance(String[] info) throws IOException {
 		File file = new File("UserBalance.txt"); // create file
 		String infosum = "";
-		String balance = "10000";
+		String balance = "20000";
 		infosum += info[0] + "~" + balance + "~";
 		try {
 			if (!file.exists())
