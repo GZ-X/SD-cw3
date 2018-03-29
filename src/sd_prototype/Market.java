@@ -20,11 +20,11 @@ public class Market {
 		while (true) {
 
 			System.out.println("--------------------Market--------------------\n");
-			System.out.println("\t\t 1. Purchase character\n");//
-			System.out.println("\t\t 2. Purchase equipment\n");//
-			System.out.println("\t\t 3. return\n");// 注销账户
+			System.out.println("\t\t1.Purchase character\n");//
+			System.out.println("\t\t2.Purchase equipment\n");//
+			System.out.println("\t\t3.return\n");// 注销账户
 			System.out.println("----------------------------------------------\n");
-			System.out.print("Please select an operation:");
+			System.out.println("Please select the option and press 'enter':");
 			Scanner sc = new Scanner(System.in);
 			String choice = sc.nextLine();
 			switch (choice) {
@@ -38,7 +38,7 @@ public class Market {
 				PlayerMain.playerMainPage();
 				break;
 			default:
-				System.out.println("No such choice. Please select again.");
+				System.out.println("There is no such operation. Please select again");
 				showMain();
 				break;
 			}

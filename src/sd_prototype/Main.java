@@ -23,17 +23,17 @@ public class Main {
 
 			// welcome interface
 			System.out.println("----------------------------------------------\n");
-			System.out.println("\tWelcome to WonderWorld\n");
-			System.out.println("\t1.Login\n");
-			System.out.println("\t2.Register\n");
-			System.out.println("\t3.Exit\n ");
+			System.out.println("            Welcome to WonderWorld\n");
+			System.out.println("\t\t1.Login\n");
+			System.out.println("\t\t2.Register\n");
+			System.out.println("\t\t3.Exit\n ");
 			System.out.println("----------------------------------------------\n");
 			// scanner from keyboard
 			Scanner sc = new Scanner(System.in);
 			// claim LoginAndRegiter object as lr
 			LoginAndRegister lr = new LoginAndRegister();
 			// choose operation
-			System.out.println("Please select operation:");
+			System.out.println("Please select an option and press 'enter':");
 			String choice = sc.nextLine();
 
 			// switch case
@@ -52,7 +52,7 @@ public class Main {
 				System.exit(0); // exit the system
 				break;
 			default:
-				System.out.println("No such choice. Please select again");
+				System.out.println("There is no such choice. Please select again");
 				break;
 				
 			}

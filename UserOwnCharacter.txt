@@ -1,6 +1,3 @@
-qwe~Member1~
-qwe~Member2~
 asd~Member1~
 asd~Member2~
 asd~Member3~
-asd~Member4~

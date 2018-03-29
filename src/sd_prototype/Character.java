@@ -16,7 +16,7 @@ public class Character {
 			System.out.println("\t\t1.Show character\n");
 			System.out.println("\t\t2.Return\n");
 			System.out.println("----------------------------------------------\n");
-			System.out.print("Please select an operation:");
+			System.out.println("Please select an option and press 'enter':");
 			Scanner sc = new Scanner(System.in);
 			String choice = sc.nextLine();
 			// switch case
@@ -28,7 +28,7 @@ public class Character {
 				Market.showMain();
 				break;
 			default:
-				System.out.println("No such choice. Please select again");
+				System.out.println("There is no such choice.Please select again");
 				break;
 			}
 		}
@@ -48,7 +48,7 @@ public class Character {
 		String temp = null;
 		StringBuffer sb = new StringBuffer();
 		temp = br.readLine();
-
+		System.out.println("----------------------------------------------\n");
 		String[] productInfo = new String[10];
 		if (temp == null)
 			System.out.println("No item");
@@ -74,52 +74,59 @@ public class Character {
 			temp = br.readLine();
 		}
 
-		System.out.println("Please buy the item by selecting the NO. of it:");
 		buyCharacter();
 	}
 
 	private static void buyCharacter() throws BackingStoreException, IOException {
-
-		while (true) {
+		boolean stopBuyFlag = true;
+		while (stopBuyFlag) {
+			System.out.println("Please buy the item by selecting the NO. of it or return by press 'r':");
 			Scanner sc = new Scanner(System.in);
 			String itemNum = sc.nextLine();
-			
-			if (itemNum.equals("r")) {
+			boolean flag = false;
+			flag = new Verify().verifyCharacter(itemNum);
+			if (itemNum.equals("r")) {// if user enter 'r', then return to previous page
 				characterMenu();
-			}
-			
-			
-			else {
+			} else if (flag) {// to check whether the itemNum exists in the list of character
 				String tempCharacterInfo[] = new FileOperation().readCharacter(itemNum);
 				int price = Integer.parseInt(tempCharacterInfo[2]);
 				// to verify whether the balance is enough
-
-				if (new Verify().verifyBalance(StaticVariable.username, price)) {
+				if (!new Verify().verifyCharacterExist(StaticVariable.username, itemNum)) {
 					// to verify whether the user has already owned this item
-					if (!new Verify().verifyCharacterExist(StaticVariable.username, itemNum)) {
+					if (new Verify().verifyBalance(StaticVariable.username, price)) {
 						new FileOperation().buyThisCharacter(StaticVariable.username, itemNum);
 						System.out.println("Purchase successful");
-						//read current balance from file
+						// read current balance from file
 						String newBalance;
 						newBalance = new FileOperation().readBalance(StaticVariable.username);
-						System.out.println(StaticVariable.username + " " + "Your balance is " + newBalance + "\n");
-						System.out.println("Do you want to buy another one?(y/n)");
-						String choice = sc.nextLine();
-						if (choice.equals("y")) {
-							System.out.println("Please buy the item by selecting the NO. of it");
-							continue;
-						} else {
-							break;
+						System.out.println(
+								"'" + StaticVariable.username + "'" + " " + "Your balance is " + newBalance + "\n");
+
+						while (true) {
+							System.out.println("Do you want to buy another one?(y/n)\n");
+							String choice = sc.nextLine();
+							if (choice.equals("y")) {
+								// System.out.println("Please buy the item by selecting the NO. of it");
+								break;
+							} else if (choice.equals("n")) {
+								stopBuyFlag = false;
+								break;
+							} else {
+								System.out.println("There is no such operation\n");
+							}
 						}
+
 					} else {
-						System.out.println("You have already purchased this character");
-						System.out.println("Please select another one or return by enter 'r'");
+						System.out.println("Purchase failed. Your balance is insufficient");
 					}
 
 				} else {
-					System.out.println("Purchase failed. Your balance is insufficient");
+
+					System.out.println("You have already purchased this character");
 				}
 
+			} else {
+				System.out.println("There is no such operation.Please select again");
 			}
 		}
 	}

@@ -16,17 +16,17 @@ public class PlayerMain {
 		while (true) {
 
 			// player main interface
-			System.out.println("--------------------WonderWorld---------------\n");
-			System.out.println("\t1.Start battle\n");
-			System.out.println("\t2.Market\n");
-			System.out.println("\t3.Create squad\n");
-			System.out.println("\t4.Edit squad\n");
-			System.out.println("\t5.Log off\n");
+			System.out.println("------------------WonderWorld-----------------\n");
+			System.out.println("\t\t1.Start battle\n");
+			System.out.println("\t\t2.Market\n");
+			System.out.println("\t\t3.Create squad\n");
+			System.out.println("\t\t4.Edit squad\n");
+			System.out.println("\t\t5.Log off\n");
 			System.out.println("----------------------------------------------\n");
 			// scanner from keyboard
 			Scanner sc = new Scanner(System.in);
 			// choose operation
-			System.out.println("Please select operation:");
+			System.out.println("Please select an option and press 'enter':");
 			String choice = sc.nextLine();
 
 			// switch case
@@ -44,9 +44,12 @@ public class PlayerMain {
 				if(decision.equals("y")) {
 					break;
 				}
-				else
+				else if(decision.equals("n"))
 				{
 					continue;
+				}
+				else {
+					System.out.println("No such operation.Please enter y/n\n");
 				}
 				}
 				break;
@@ -67,9 +70,12 @@ public class PlayerMain {
 					if(decision.equals("y")) {
 						break;
 					}
-					else
+					else if(decision.equals("n"))
 					{
 						continue;
+					}
+					else {
+						System.out.println("No such operation.Please enter y/n\n");
 					}
 					}
 					break;
@@ -86,18 +92,21 @@ public class PlayerMain {
 					if(decision.equals("y")) {
 						break;
 					}
-					else
+					else if(decision.equals("n"))
 					{
 						continue;
+					}
+					else {
+						System.out.println("No such operation.Please enter y/n\n");
 					}
 					}
 					break;
 			//log off
 			case "5":
-				System.out.println("You have been Logged off ");
+				System.out.println("You have Logged off\n");
 				Main.main(null);
 			default:
-				System.out.println("No such choice. Please select again");
+				System.out.println("There is no such choice. Please select again\n");
 				break;
 				
 			}
