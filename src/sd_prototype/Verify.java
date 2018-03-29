@@ -21,10 +21,10 @@ public class Verify {
 		while (temp != null) {
 			String sbstring = temp.toString(); 
 			int n = sbstring.length(); // get the length of string
-			String[] message = new String[5]; // split the string and assign to an array
+			String[] message = new String[10]; // split the string and assign to an array
 			int k = 0;
 
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 10; i++)
 				message[i] = "";
 			for (int i = 0; i < n; i++) {
 				if (sbstring.charAt(i) == '~') 
@@ -56,11 +56,11 @@ public class Verify {
 		while (temp != null) {
 			String sbstring = temp.toString();
 			int n = sbstring.length(); // get the length of string
-			String[] message = new String[5];
+			String[] message = new String[10];
 			int k = 0;
 
 			// split the string and assign characters to an array.
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 10; i++)
 				message[i] = "";
 			for (int i = 0; i < n; i++) {
 				if (sbstring.charAt(i) == '~') {
@@ -87,11 +87,11 @@ public class Verify {
 		while (temp != null) {
 			String sbstring = temp.toString();
 			int n = sbstring.length(); // get the length of string
-			String[] message = new String[5];
+			String[] message = new String[10];
 			int k = 0;
 
 			// split the string and assign characters to an array.
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 10; i++)
 				message[i] = "";
 			for (int i = 0; i < n; i++) {
 				if (sbstring.charAt(i) == '~') {
@@ -101,7 +101,9 @@ public class Verify {
 				}
 			}
 			StaticVariable.balance = message[1];//give the current balance to the static variable 'balance'
-			int userBalance = Integer.parseInt(message[1]);
+			//System.out.println(message[1]);
+			int userBalance = Integer.parseInt(message[1].trim());
+
 			if (username.equals(message[0]) && price <= userBalance)
 				return true;
 			temp = br.readLine();
@@ -152,5 +154,47 @@ public class Verify {
         return false;
     }
 	
+	
+	public boolean verifyEquipmentExist(String username, String itemNum) throws IOException
+    {
+        File file=new File("UserOwnEquipment.txt");
+        if (!file.exists() || file.isDirectory()) // check whether the file exist
+			file.createNewFile();
+        BufferedReader br=new BufferedReader(new FileReader(file));
+        String temp=null;
+        StringBuffer sb=new StringBuffer();
+        temp=br.readLine();
+
+        String []message = new String[10];     
+        while(temp!=null){
+            String sbstring = temp.toString();
+            int n = sbstring.length();            
+            for (int i=0; i<10; i++)
+                message[i] = "";
+
+            int k=0;
+            for (int i=0; i<n; i++)
+            {
+                if(sbstring.charAt(i)=='~')  //distinguish each character by '~'
+                {
+                    k++;
+                }
+                else 
+                {
+                    message[k] += sbstring.charAt(i);
+                }
+            }
+            
+            String tempEquipmentInfo[] = new FileOperation().readEquipment(itemNum);//read the name of this item by its item number
+            if (message[0].equals(username) && message[1].equals(tempEquipmentInfo[1]))//verify username and item name
+            {
+                return true;
+            }
+            temp=br.readLine();
+        }
+        br.close();
+       
+        return false;
+    }
 
 }

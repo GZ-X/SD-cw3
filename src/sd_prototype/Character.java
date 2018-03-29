@@ -83,9 +83,13 @@ public class Character {
 		while (true) {
 			Scanner sc = new Scanner(System.in);
 			String itemNum = sc.nextLine();
+			
 			if (itemNum.equals("r")) {
 				characterMenu();
-			} else {
+			}
+			
+			
+			else {
 				String tempCharacterInfo[] = new FileOperation().readCharacter(itemNum);
 				int price = Integer.parseInt(tempCharacterInfo[2]);
 				// to verify whether the balance is enough
@@ -93,8 +97,12 @@ public class Character {
 				if (new Verify().verifyBalance(StaticVariable.username, price)) {
 					// to verify whether the user has already owned this item
 					if (!new Verify().verifyCharacterExist(StaticVariable.username, itemNum)) {
-						new FileOperation().buyThisItem(StaticVariable.username, itemNum);
-						System.out.println("Purchase successful\n");
+						new FileOperation().buyThisCharacter(StaticVariable.username, itemNum);
+						System.out.println("Purchase successful");
+						//read current balance from file
+						String newBalance;
+						newBalance = new FileOperation().readBalance(StaticVariable.username);
+						System.out.println(StaticVariable.username + " " + "Your balance is " + newBalance + "\n");
 						System.out.println("Do you want to buy another one?(y/n)");
 						String choice = sc.nextLine();
 						if (choice.equals("y")) {

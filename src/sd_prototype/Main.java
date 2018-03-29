@@ -1,6 +1,7 @@
 package sd_prototype;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.prefs.BackingStoreException;
@@ -16,6 +17,7 @@ import sd_prototype.Market;
 public class Main {
 	
 	public static void main(String[] args) throws IOException, BackingStoreException {
+
 
 		while (true) {
 

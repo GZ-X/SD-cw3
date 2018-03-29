@@ -38,7 +38,7 @@ public class LoginAndRegister {
 		String confirmPassword = sc.nextLine();
 		if (newPassword.equals(confirmPassword)) {
 
-			String[] info = new String[5];
+			String[] info = new String[10];
 			info[0] = newUserName;
 			info[1] = newPassword;
 			if (!new Verify().verifyExist(info[0])) {
