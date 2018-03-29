@@ -1,17 +1,15 @@
 package sd_prototype;
 
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.ArrayList;
+import java.io.IOException; 
 import java.util.Scanner;
 import java.util.prefs.BackingStoreException;
 
-import sd_prototype.Market;
 
 /**
+*
 * @author Guo Zheng   
-* 
 * Game Market system
+* Github URL : https://github.com/GZ-X/SD-cw3.git
 * 
 */
 public class Main {
