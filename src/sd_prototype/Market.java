@@ -22,7 +22,7 @@ public class Market {
 			System.out.println("--------------------Market--------------------\n");
 			System.out.println("\t\t1.Purchase character\n");//
 			System.out.println("\t\t2.Purchase equipment\n");//
-			System.out.println("\t\t3.return\n");// 注销账户
+			System.out.println("\t\t3.return\n");// log off
 			System.out.println("----------------------------------------------\n");
 			System.out.println("Please select the option and press 'enter':");
 			Scanner sc = new Scanner(System.in);
