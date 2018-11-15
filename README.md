@@ -1,2 +1,1 @@
-# SD-cw3
-Software development course coursework3
+# Game market system prototype
